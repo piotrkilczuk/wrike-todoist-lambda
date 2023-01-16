@@ -1,0 +1,27 @@
+service: wrike-todoist
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  memorySize: 128
+  timeout: 30
+  environment:
+    PYTHONPATH: src/
+    WRIKE_ACCESS_TOKEN:
+    WRIKE_FOLDER:
+    TODOIST_ACCESS_TOKEN:
+    TODOIST_PROJECT_NAME:
+    TODOIST_LABEL: Wrike
+    TODOIST_DEFAULT_PRIORITY: P3
+
+plugins:
+  - serverless-python-requirements
+
+functions:
+  sync_wrike_to_todoist:
+    handler: handler.run
+    events:
+      # Invoke Lambda function every minute
+      - schedule: rate(1 minute)
