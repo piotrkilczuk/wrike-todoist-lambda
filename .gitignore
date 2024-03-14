@@ -2,3 +2,6 @@
 /serverless.yml
 
 /node_modules
+
+# This is the actual code
+/src
