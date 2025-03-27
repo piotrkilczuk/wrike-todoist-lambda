@@ -1,0 +1,31 @@
+service: wrike-todoist
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  memorySize: 128
+  timeout: 30
+  environment:
+    PYTHONPATH: src/
+    GCP_PROJECT_ID: ${env:GCP_PROJECT_ID}
+    GCP_CLIENT_ID: ${env:GCP_CLIENT_ID}
+    GCP_CLIENT_SECRET: ${env:GCP_CLIENT_SECRET}
+    GOOGLE_CALENDAR_ID: ${env:GOOGLE_CALENDAR_ID}
+    GOOGLE_CALENDAR_REFRESH_TOKEN: ${env:GOOGLE_CALENDAR_REFRESH_TOKEN}
+    TODOIST_ACCESS_TOKEN: ${env:TODOIST_ACCESS_TOKEN}
+    TODOIST_PROJECT_NAME: ${env:TODOIST_PROJECT_NAME}
+    TODOIST_LABEL: ${env:TODOIST_LABEL}
+    TODOIST_DEFAULT_PRIORITY: ${env:TODOIST_DEFAULT_PRIORITY}
+    WRIKE_ACCESS_TOKEN: ${env:WRIKE_ACCESS_TOKEN}
+    WRIKE_FOLDERS: ${env:WRIKE_FOLDERS}
+
+plugins:
+  - serverless-python-requirements
+
+functions:
+  sync_wrike_to_todoist:
+    handler: handler.run
+    events:
+      - schedule: rate(5 minute)
