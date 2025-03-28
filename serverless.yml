@@ -1,12 +1,14 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: piotrkilczuk
 service: wrike-todoist
 
-frameworkVersion: '3'
+frameworkVersion: '4'
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.9
   memorySize: 128
-  timeout: 30
+  timeout: 120
   environment:
     PYTHONPATH: src/
     GCP_PROJECT_ID: ${env:GCP_PROJECT_ID}
@@ -25,7 +27,13 @@ plugins:
   - serverless-python-requirements
 
 functions:
-  sync_wrike_to_todoist:
-    handler: handler.run
+  sync_google_calendar_to_todoist:
+    handler: handler.run_google_calendar
+    reservedConcurrency: 1
     events:
-      - schedule: rate(5 minute)
+      - schedule: rate(10 minutes)
+  sync_wrike_to_todoist:
+    handler: handler.run_wrike
+    reservedConcurrency: 1
+    events:
+      - schedule: rate(1 minute)

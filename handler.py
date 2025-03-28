@@ -2,8 +2,13 @@ import logging
 
 from wrike_todoist import console
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
-def run(event, context):
-    console.main()
+logger = logging.getLogger()
+logger.setLevel("INFO")
+
+
+def run_google_calendar(event, context):
+    console.google_calendar_todoist_main()
+
+def run_wrike(event, context):
+    console.wrike_todoist_main()
