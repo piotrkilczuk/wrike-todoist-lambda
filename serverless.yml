@@ -32,6 +32,11 @@ functions:
     reservedConcurrency: 1
     events:
       - schedule: rate(10 minutes)
+  sync_harmonogram_to_todoist:
+    handler: handler.run_harmonogram
+    reservedConcurrency: 1
+    events:
+      - schedule: rate(1 day)
   sync_wrike_to_todoist:
     handler: handler.run_wrike
     reservedConcurrency: 1
