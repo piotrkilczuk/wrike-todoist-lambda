@@ -20,8 +20,7 @@ provider:
     TODOIST_PROJECT_NAME: ${env:TODOIST_PROJECT_NAME}
     TODOIST_LABEL: ${env:TODOIST_LABEL}
     TODOIST_DEFAULT_PRIORITY: ${env:TODOIST_DEFAULT_PRIORITY}
-    WRIKE_ACCESS_TOKEN: ${env:WRIKE_ACCESS_TOKEN}
-    WRIKE_FOLDERS: ${env:WRIKE_FOLDERS}
+    GITHUB_CLASSIC_TOKEN: ${env:GITHUB_CLASSIC_TOKEN}
 
 plugins:
   - serverless-python-requirements
@@ -37,8 +36,8 @@ functions:
     reservedConcurrency: 1
     events:
       - schedule: rate(1 day)
-  sync_wrike_to_todoist:
-    handler: handler.run_wrike
+  sync_github_to_todoist:
+    handler: handler.run_github
     reservedConcurrency: 1
     events:
       - schedule: rate(1 minute)

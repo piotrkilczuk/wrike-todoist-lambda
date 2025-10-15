@@ -15,5 +15,5 @@ def run_harmonogram(event, context):
     console.harmonogram_main()
 
 
-def run_wrike(event, context):
-    console.wrike_todoist_main()
+def run_github(event, context):
+    console.github_todoist_main()
