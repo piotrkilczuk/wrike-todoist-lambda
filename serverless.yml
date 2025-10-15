@@ -6,7 +6,7 @@ frameworkVersion: '4'
 
 provider:
   name: aws
-  runtime: python3.9
+  runtime: python3.10
   memorySize: 128
   timeout: 120
   environment:
