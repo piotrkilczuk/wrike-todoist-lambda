@@ -42,4 +42,4 @@ functions:
     handler: handler.run_github
     reservedConcurrency: 1
     events:
-      - schedule: rate(1 minute)
+      - schedule: rate(2 minutes)
