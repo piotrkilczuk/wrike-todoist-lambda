@@ -24,8 +24,8 @@ provider:
     WRIKE_FOLDERS: ${env:WRIKE_FOLDERS}
     GITHUB_CLASSIC_TOKEN: ${env:GITHUB_CLASSIC_TOKEN}
 
-plugins:
-  - serverless-python-requirements
+custom:
+  pythonRequirements: {}
 
 functions:
   sync_google_calendar_to_todoist:
