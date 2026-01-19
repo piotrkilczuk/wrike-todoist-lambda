@@ -23,6 +23,7 @@ provider:
     WRIKE_ACCESS_TOKEN: ${env:WRIKE_ACCESS_TOKEN}
     WRIKE_FOLDERS: ${env:WRIKE_FOLDERS}
     GITHUB_CLASSIC_TOKEN: ${env:GITHUB_CLASSIC_TOKEN}
+    SENTRY_DSN: ${env:SENTRY_DSN, ''}
 
 custom:
   pythonRequirements: {}
